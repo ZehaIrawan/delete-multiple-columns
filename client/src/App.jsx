@@ -8,13 +8,6 @@ import {
   Text,
   Loader,
   Toast,
-  Box,
-  TextField,
-  Button,
-  Tab,
-  TabPanel,
-  TabList,
-  TabPanels,
 } from "monday-ui-react-core";
 import { Heading } from "monday-ui-react-core/next";
 import {
@@ -24,12 +17,9 @@ import {
   decreaseUserCredit,
 } from "./utils/api";
 import { getProfileDataCost } from "./utils/constant";
-import personProfile from "./data/personProfile";
-import PersonProfileData from "./components/PersonProfileData";
-import PersonProfileSettings from "./components/PersonProfileSettings";
-import SearchProfile from "./components/SearchProfile";
 import "./app.css";
 import OnboardingPage from "./components/OnboardingPage";
+import ColumnDeleteBulk from "./components/ColumnDeleteBulk";
 
 const monday = mondaySdk();
 
@@ -42,40 +32,10 @@ export default function App() {
 
   const [isSavingLead, setIsSavingLead] = useState(false);
   const [isFailedToSaveLead, setIsFailedToSaveLead] = useState(false);
-  const [activeTabId, setActiveTabId] = useState(0);
   const [isLoadingSaving, setIsLoadingSaving] = useState(false);
   const [isOnboarded, setIsOnboarded] = useState(true);
 
-  const mustHaveColumn = [
-    { value: "linkedin_profile_url", label: "LinkedIn Profile URL" },
-    { value: "first_name", label: "First Name" },
-    { value: "last_name", label: "Last Name" },
-    { value: "full_name", label: "Full Name" },
-    { value: "occupation", label: "Occupation" },
-    { value: "city", label: "City" },
-    { value: "state", label: "State" },
-    { value: "skills", label: "Skills" },
-    { value: "experiences", label: "Experiences" },
-    { value: "education", label: "Education" },
-    // { value: "country_full_name", label: "Country Full Name" },
-  ];
 
-  const [checkedItems, setCheckedItems] = useState(() => {
-    const saved = localStorage.getItem("personProfileSettings");
-    return saved
-      ? JSON.parse(saved)
-      : mustHaveColumn.reduce((acc, column) => {
-          acc[column.value] = false;
-          return acc;
-        }, {});
-  });
-
-  const handleActiveTab = (tabId) => {
-    setActiveTabId(tabId);
-  };
-
-  const isLoadingPlaces = false;
-  const isFetchingPlaces = false;
 
   const handleGetProfileData = async (personURL) => {
     try {
@@ -158,7 +118,7 @@ export default function App() {
         }
 
         if (key === "skills") {
-          const skillsStrings = profileData.skills[0]
+          const skillsStrings = profileData.skills[0];
           columnData[key] = skillsStrings;
         }
       }
@@ -255,14 +215,19 @@ export default function App() {
       );
       setIsOnboarded(isOnboarded);
 
-      checkAndCreateUser(accountId, "monday.com", userId);
+      // checkAndCreateUser(accountId, "monday.com", userId);
 
       const boardQuery = `query {boards(ids: ${res.data.boardId}) {columns {id title}}}`;
       const boardResponse = await monday.api(boardQuery);
 
-      setBoardColumns(
-        boardResponse.data.boards[0].columns.map((column) => column.id),
-      );
+      console.log(boardResponse, "boardResponse");
+
+      const fetchedBoardColumns = boardResponse.data.boards[0].columns.map((column) => ({
+        value: column.id,
+        label: column.title,
+      }));
+
+      setBoardColumns(fetchedBoardColumns);
     });
   }, []);
 
@@ -355,94 +320,9 @@ export default function App() {
           Failed to save lead
         </Toast>
 
-        <TabList tabType="stretched" activeTabId={activeTabId}>
-          <Tab onClick={() => handleActiveTab(0)}>1. Search Profile</Tab>
-          <Tab onClick={() => handleActiveTab(1)}>2. Get Profile Data</Tab>
-          <Tab onClick={() => handleActiveTab(2)}>3. Email Lookup</Tab>
-        </TabList>
-
-        <TabPanels activeTabId={activeTabId}>
-          <TabPanel>
-            {/* Person Search Endpoint */}
-            <Text type={Text.types.TEXT1}>
-              Cost: <strong>3</strong> credits / profile returned
-    
-            </Text>
-            <Text type={Text.types.TEXT1}>
-             <strong>Result is limited to 1 on a free plan</strong>
-            </Text>
-            <br />
-            <SearchProfile
-              boardColumns={boardColumns}
-              context={context}
-              monday={monday}
-              activeTabId={activeTabId}
-              findDynamicColumnId={findDynamicColumnId}
-              isLoading={isLoadingSaving}
-              setIsSavingLead={setIsSavingLead}
-              setIsLoadingSaving={setIsLoadingSaving}
-              userData={userData}
-              setUserData={setUserData}
-            />
-          </TabPanel>
-          <TabPanel>
-            <PersonProfileSettings
-              checkedItems={checkedItems}
-              setCheckedItems={setCheckedItems}
-              mustHaveColumn={mustHaveColumn}
-            />
-            <PersonProfileData
-              activeTabId={activeTabId}
-              isLoading={isLoadingSaving}
-              checkedItems={checkedItems}
-              handleGetProfileData={handleGetProfileData}
-              userData={userData}
-            />
-          </TabPanel>
-          <TabPanel>
-            <Text type={Text.types.TEXT1}>Coming Soon!</Text>
-
-            <Text type={Text.types.TEXT1}>
-              Contact support@getturboflow.com if you want this feature to be
-              available soon!
-            </Text>
-          </TabPanel>
-        </TabPanels>
-
         <br></br>
 
-        {/*<Flex direction='Column' align='Left' style={{marginTop:'2rem'}} >
-        <Text color={Text.colors.SECONDARY} type={Text.types.TEXT2}>
-         Company Profile
-        </Text>
-        <TextField
-          placeholder="https://www.linkedin.com/company/helpjuice"
-          size={TextField.sizes.MEDIUM}
-        />
-        <Button style={{ marginTop: "0.5rem" }}  variant="filled">Search</Button>
-        </Flex>*/}
-
-        {(isLoadingPlaces || isFetchingPlaces) && (
-          <Flex direction={"Row"} align={"Center"} justify={"Center"} pt={"xl"}>
-            <Loader size={50} />
-            <Text fw={500} mt="sm">
-              Getting your leads...
-            </Text>
-          </Flex>
-        )}
-
-        {!isLoadingPlaces && !isFetchingPlaces && (
-          <div
-            style={{
-              display: "grid",
-              gridTemplateColumns: "1fr 1fr",
-              gap: "2rem",
-              margin: "1.5rem auto",
-              width: "80%",
-              paddingBottom: "10vh",
-            }}
-          ></div>
-        )}
+        <ColumnDeleteBulk existingBoardColumns={boardColumns} />
       </div>
     </div>
   );
