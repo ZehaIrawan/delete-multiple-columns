@@ -1,0 +1,408 @@
+{
+  "public_identifier": "zehairawan",
+  "profile_pic_url": "https://s3.us-west-000.backblazeb2.com/proxycurl/person/zehairawan/profile?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=0004d7f56a0400b0000000001%2F20240520%2Fus-west-000%2Fs3%2Faws4_request&X-Amz-Date=20240520T205207Z&X-Amz-Expires=3600&X-Amz-SignedHeaders=host&X-Amz-Signature=0d59ffc5ae6ad9d66a54aa4e02ba9b024cd24a45511fdd024e08c7ac7ec9f9a9",
+  "background_cover_image_url": "https://s3.us-west-000.backblazeb2.com/proxycurl/person/zehairawan/cover?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=0004d7f56a0400b0000000001%2F20240520%2Fus-west-000%2Fs3%2Faws4_request&X-Amz-Date=20240520T205207Z&X-Amz-Expires=3600&X-Amz-SignedHeaders=host&X-Amz-Signature=81a081ecd838bc49f10bca53a27f30d963050c0fe0d8ba6fa18fe9e283d45ca1",
+  "first_name": "Zeha",
+  "last_name": "Irawan",
+  "full_name": "Zeha Irawan",
+  "follower_count": 558,
+  "occupation": "Senior Full-stack Developer at Unilite",
+  "headline": "Senior Full-stack Developer",
+  "summary": "Full-stack Developer specialising in early-stage SaaS startups.",
+  "country": "ID",
+  "country_full_name": "Indonesia",
+  "city": "Samarinda",
+  "state": "East Kalimantan",
+  "experiences": [
+      {
+          "starts_at": {
+              "day": 1,
+              "month": 7,
+              "year": 2023
+          },
+          "ends_at": {
+              "day": 29,
+              "month": 2,
+              "year": 2024
+          },
+          "company": "Unilite",
+          "company_linkedin_profile_url": "https://www.linkedin.com/company/unilite",
+          "company_facebook_profile_url": null,
+          "title": "Senior Full-stack Developer",
+          "description": null,
+          "location": "Berkeley, California, United States · Remote",
+          "logo_url": "https://media.licdn.com/dms/image/D4D0BAQFK5_FzE-WGjg/company-logo_400_400/0/1685430805312?e=1717027200&v=beta&t=sp2KhOD7bVSyolP8j8Z6lpJlmzKgWguYErxH6pjnCgo"
+      },
+      {
+          "starts_at": {
+              "day": 1,
+              "month": 6,
+              "year": 2023
+          },
+          "ends_at": {
+              "day": 31,
+              "month": 12,
+              "year": 2023
+          },
+          "company": "Yicom",
+          "company_linkedin_profile_url": "https://www.linkedin.com/company/yicomm",
+          "company_facebook_profile_url": null,
+          "title": "Senior Frontend Developer",
+          "description": null,
+          "location": "Hong Kong SAR · Remote",
+          "logo_url": "https://media.licdn.com/dms/image/C560BAQGMrju6XLHZUw/company-logo_400_400/0/1634613999637/yicomm_logo?e=1717027200&v=beta&t=zg4GPDAUryFtVnCNwE_x3-QTEYyKGmCLE3Hg5WpI1Oo"
+      },
+      {
+          "starts_at": {
+              "day": 1,
+              "month": 4,
+              "year": 2022
+          },
+          "ends_at": {
+              "day": 30,
+              "month": 4,
+              "year": 2023
+          },
+          "company": "CLADE",
+          "company_linkedin_profile_url": "https://www.linkedin.com/company/cladetechnology",
+          "company_facebook_profile_url": null,
+          "title": "Senior Software Engineer",
+          "description": "https://app.finitive.com/",
+          "location": "North Fremantle, Western Australia, Australia · Remote",
+          "logo_url": "https://media.licdn.com/dms/image/C560BAQG1_oxD5SxM7Q/company-logo_400_400/0/1643279755488/cladetechnology_logo?e=1717027200&v=beta&t=z9z-hGSp60rVvweTavNdxn5OV-ZWv3FN3yYr75r4jZw"
+      },
+      {
+          "starts_at": {
+              "day": 1,
+              "month": 1,
+              "year": 2020
+          },
+          "ends_at": {
+              "day": 28,
+              "month": 2,
+              "year": 2022
+          },
+          "company": "GaluhKirana.com",
+          "company_linkedin_profile_url": null,
+          "company_facebook_profile_url": null,
+          "title": "Business Owner",
+          "description": null,
+          "location": null,
+          "logo_url": null
+      },
+      {
+          "starts_at": {
+              "day": 1,
+              "month": 1,
+              "year": 2013
+          },
+          "ends_at": {
+              "day": 31,
+              "month": 12,
+              "year": 2018
+          },
+          "company": "Ratiwijayashop",
+          "company_linkedin_profile_url": null,
+          "company_facebook_profile_url": null,
+          "title": "Digital Marketer ",
+          "description": null,
+          "location": "East Java Province, Indonesia",
+          "logo_url": null
+      },
+      {
+          "starts_at": {
+              "day": 1,
+              "month": 12,
+              "year": 2020
+          },
+          "ends_at": {
+              "day": 28,
+              "month": 2,
+              "year": 2022
+          },
+          "company": "Work at Aha | Chat for Generation G",
+          "company_linkedin_profile_url": "https://www.linkedin.com/company/growaha",
+          "company_facebook_profile_url": null,
+          "title": "Full-stack Developer",
+          "description": "https://www.earnaha.com/",
+          "location": "Remote",
+          "logo_url": "https://media.licdn.com/dms/image/C560BAQHsfF-AbrUYiQ/company-logo_400_400/0/1631519380137/perfectfi_logo?e=1717027200&v=beta&t=JEfo0fH_jyEbedLiEZdt479GRTWE9Q9B1vumovNIxQM"
+      },
+      {
+          "starts_at": {
+              "day": 1,
+              "month": 12,
+              "year": 2020
+          },
+          "ends_at": {
+              "day": 28,
+              "month": 2,
+              "year": 2022
+          },
+          "company": "MTX",
+          "company_linkedin_profile_url": "https://www.linkedin.com/company/mtxmtx",
+          "company_facebook_profile_url": null,
+          "title": "Full-stack Developer",
+          "description": null,
+          "location": "Remote",
+          "logo_url": "https://media.licdn.com/dms/image/C560BAQFiV4ZEfPPtjQ/company-logo_400_400/0/1636342074445/fatbull_logo?e=1717027200&v=beta&t=EMle_woGjs2VsrJ1Qkoa6Ks3EQ9kRvtkEKGTKvB4Fzs"
+      },
+      {
+          "starts_at": {
+              "day": 1,
+              "month": 12,
+              "year": 2019
+          },
+          "ends_at": {
+              "day": 31,
+              "month": 3,
+              "year": 2020
+          },
+          "company": "igaku",
+          "company_linkedin_profile_url": "https://www.linkedin.com/company/igaku",
+          "company_facebook_profile_url": null,
+          "title": "Full-stack Developer",
+          "description": null,
+          "location": "Remote",
+          "logo_url": "https://media.licdn.com/dms/image/D560BAQGBoMtAXLvmsQ/company-logo_400_400/0/1688454514211/igaku_logo?e=1717027200&v=beta&t=m8zLaB4jdCRaXaZcNOJ21tcziv8q6N181A-31He2_Fc"
+      }
+  ],
+  "education": [
+      {
+          "starts_at": {
+              "day": 1,
+              "month": 1,
+              "year": 2018
+          },
+          "ends_at": {
+              "day": 31,
+              "month": 12,
+              "year": 2019
+          },
+          "field_of_study": null,
+          "degree_name": "Remote Full Stack Web Development Program",
+          "school": "Microverse",
+          "school_linkedin_profile_url": "https://www.linkedin.com/company/13711060/",
+          "school_facebook_profile_url": null,
+          "description": "-Spent 1300+ hours mastering algorithms, data structures, and full-stack development while simultaneously developing projects with Ruby, Rails, JavaScript, React, and Redux.\n\n-Developed skills in remote pair programming using GitHub, industry-standard git-flow, and daily standups to communicate and collaborate with international remote developers. \n\n-Provided both synchronous and asynchronous guidance and assistance to 3 mentees.",
+          "logo_url": "https://media.licdn.com/dms/image/C560BAQHr8P7gQ95yCQ/company-logo_400_400/0/1630603594760/microverseinc_logo?e=1717027200&v=beta&t=Gmoh3sFIUZ-wP1cXzFVBUdEGVUw34qg7LZH99NU2qaU",
+          "grade": null,
+          "activities_and_societies": null
+      }
+  ],
+  "languages": [],
+  "accomplishment_organisations": [],
+  "accomplishment_publications": [],
+  "accomplishment_honors_awards": [],
+  "accomplishment_patents": [],
+  "accomplishment_courses": [],
+  "accomplishment_projects": [],
+  "accomplishment_test_scores": [],
+  "volunteer_work": [],
+  "certifications": [
+      {
+          "starts_at": {
+              "day": 1,
+              "month": 10,
+              "year": 2019
+          },
+          "ends_at": null,
+          "name": "Microverse React & Redux Module",
+          "license_number": null,
+          "display_source": "www.credential.net",
+          "authority": "Microverse",
+          "url": "https://www.credential.net/6a4611ee-14ae-4a45-b8c0-faebbc86b57a#gs.uiblqe"
+      },
+      {
+          "starts_at": {
+              "day": 1,
+              "month": 10,
+              "year": 2019
+          },
+          "ends_at": null,
+          "name": "Microverse Ruby/Databases Module",
+          "license_number": null,
+          "display_source": "www.credential.net",
+          "authority": "Microverse",
+          "url": "https://www.credential.net/6a4611ee-14ae-4a45-b8c0-faebbc86b57a#gs.uiblqe"
+      }
+  ],
+  "connections": 565,
+  "people_also_viewed": [
+      {
+          "link": "https://www.linkedin.com/in/shuhanyang15",
+          "name": "Shuhan Yang",
+          "summary": "Junior Designer at WIP Venture DAO | Crypto | DeFi | We’re Hiring!",
+          "location": null
+      },
+      {
+          "link": "https://www.linkedin.com/in/achmad-yohni-wahyu-f-669107131",
+          "name": "Achmad Yohni Wahyu F",
+          "summary": "Frontend Engineer",
+          "location": null
+      },
+      {
+          "link": "https://www.linkedin.com/in/tomas-lin-407296a2",
+          "name": "Tomas Lin",
+          "summary": "Senior Full-Stack Developer at WIP Venture DAO | Crypto | DeFi | We’re Hiring!",
+          "location": null
+      },
+      {
+          "link": "https://www.linkedin.com/in/judy-chen-b32538198",
+          "name": "Judy Chen",
+          "summary": "Senior Designer at WIP Venture DAO | Crypto | DeFi | We’re hiring!",
+          "location": null
+      },
+      {
+          "link": "https://www.linkedin.com/in/zeallin",
+          "name": "Zeal Lin",
+          "summary": "Senior Full Stack Engineer at WIP Venture DAO | Crypto | DeFi | We’re Hiring!",
+          "location": null
+      },
+      {
+          "link": "https://www.linkedin.com/in/shih-ting-liu-uxdesigner",
+          "name": "Shih-Ting Liu",
+          "summary": "Junior Designer at WIP Venture DAO | Crypto | DeFi | We’re Hiring!",
+          "location": null
+      },
+      {
+          "link": "https://www.linkedin.com/in/fawwazadi",
+          "name": "Fawwazadi Faishol Amir",
+          "summary": "Junior Designer at WIP Venture DAO | Crypto | DeFi | We’re Hiring!",
+          "location": null
+      },
+      {
+          "link": "https://www.linkedin.com/in/teddy-xiong-24b501222",
+          "name": "Teddy Xiong",
+          "summary": "Senior Back-End Developer at Aha Learn-to-Earn | Crypto | DeFi | We’re Hiring!",
+          "location": null
+      },
+      {
+          "link": "https://www.linkedin.com/in/kcchen1688",
+          "name": "Kai-Ching C.",
+          "summary": "Distinguished Back-End Developer at WIP Venture DAO | Crypto | DeFi | We’re Hiring!”",
+          "location": null
+      },
+      {
+          "link": "https://www.linkedin.com/in/dendyfebriyandra",
+          "name": "Dendy Febriyandra",
+          "summary": "Full Stack Developer",
+          "location": null
+      },
+      {
+          "link": "https://www.linkedin.com/in/vrizawahyu22",
+          "name": "Vriza Wahyu Saputra",
+          "summary": "Frontend Developer di Clade Ventures",
+          "location": null
+      },
+      {
+          "link": "https://www.linkedin.com/in/ida-bagus-kade-taruna-27aa36227",
+          "name": "Ida Bagus Kade Taruna",
+          "summary": "Software Engineer",
+          "location": null
+      },
+      {
+          "link": "https://www.linkedin.com/in/didikmulyadi",
+          "name": "Didik M.",
+          "summary": "Technical Lead at Horizon",
+          "location": null
+      },
+      {
+          "link": "https://www.linkedin.com/in/gilang-darmawan",
+          "name": "Gilang Darmawan",
+          "summary": "Front End Developer",
+          "location": null
+      },
+      {
+          "link": "https://www.linkedin.com/in/handy-k-25a0a0141",
+          "name": "Handy K.",
+          "summary": null,
+          "location": null
+      },
+      {
+          "link": "https://www.linkedin.com/in/yudha-haris-purnama-890ba5205",
+          "name": "Yudha Haris Purnama",
+          "summary": "Managing RISTEK | Software Engineer at CLADE",
+          "location": null
+      },
+      {
+          "link": "https://www.linkedin.com/in/edwinardiwinata",
+          "name": "Edwin Ardiwinata",
+          "summary": "Building world class engineering team",
+          "location": null
+      },
+      {
+          "link": "https://www.linkedin.com/in/pandu-060196",
+          "name": "Fungki Pandu",
+          "summary": "Senior Software Engineer (Mobile, Web, Backend Developer)",
+          "location": null
+      },
+      {
+          "link": "https://www.linkedin.com/in/m-iqbal-kurniawan-794638102",
+          "name": "M Iqbal Kurniawan",
+          "summary": "Frontend Developer",
+          "location": null
+      }
+  ],
+  "recommendations": [
+      "Marvel Gomulya\n\n\n\nZeha is an excellent engineer in Unilite. He has spearheaded projects (like our EssayAI) from development to production, gladly learning whatever is required to make it work along the way. He suggests relevant ideas, and has clear passion for programming. He proactively asks details to get the job done. Overall a great engineer and an even better individual!",
+      "Anthony Michel\n\n\n\nI highly recommend Zeha as a Front End Software Engineer. Since joining Yicom, he has shown outstanding adaptability and skill, tackling complex and legacy code with impressive proficiency. His proactive and curious nature has been a catalyst for his rapid growth within our team.\n\nZeha excels in collaboration, actively sharing ideas that enhance our processes and product. He has a strong work ethic, consistently delivering high-quality code and showing a keen interest in expanding his expertise into different areas.\n\nIn short, Zeha's technical abilities, combined with his collaborative spirit and initiative, make him a valuable asset to any team. He has my fullest endorsement for any future endeavors in his career."
+  ],
+  "activities": [],
+  "similarly_named_profiles": [],
+  "articles": [],
+  "groups": [
+      {
+          "profile_pic_url": "https://media.licdn.com/dms/image/D5607AQEpIHFnRMEa-g/group-logo_image-shrink_48x48/0/1652782229567?e=1709773200&v=beta&t=DFbYT8uRwQFtw3IodGTHpCOCkvy1kAd_1_EKw4pektY",
+          "name": "Microverse Alums",
+          "url": "https://www.linkedin.com/groups/14082911"
+      }
+  ],
+  "skills": [
+      "HTML",
+      "HTML5",
+      "Cascading Style Sheets (CSS)",
+      "Ruby",
+      "Databases",
+      "Tailwind CSS",
+      "Prisma",
+      "PostgreSQL",
+      "Next.js",
+      "GatsbyJS",
+      "Jest",
+      "Firebase",
+      "TypeScript",
+      "Material-UI",
+      "Google Kubernetes Engine (GKE)",
+      "Cloud Firestore",
+      "Ffmpeg",
+      "Node.js",
+      "Digital Marketing",
+      "React.js",
+      "Express.js",
+      "Ruby on Rails",
+      "MongoDB",
+      "Redux.js",
+      "JavaScript",
+      "Search Engine Optimization (SEO)",
+      "Email Marketing",
+      "Lead Generation",
+      "E-commerce",
+      "Copywriting"
+  ],
+  "inferred_salary": {
+      "min": null,
+      "max": null
+  },
+  "gender": null,
+  "birth_date": null,
+  "industry": null,
+  "extra": {
+      "github_profile_id": null,
+      "twitter_profile_id": null,
+      "facebook_profile_id": null
+  },
+  "interests": [],
+  "personal_emails": [],
+  "personal_numbers": []
+}

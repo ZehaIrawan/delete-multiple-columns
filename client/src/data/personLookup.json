@@ -1,0 +1,21 @@
+{
+  "results": [
+      {
+          "linkedin_profile_url": "https://www.linkedin.com/in/colinfranceschini",
+          "profile": null,
+          "last_updated": null
+      },
+      {
+          "linkedin_profile_url": "https://www.linkedin.com/in/hart-montgomery-03b274231",
+          "profile": null,
+          "last_updated": null
+      },
+      {
+          "linkedin_profile_url": "https://www.linkedin.com/in/irvin-irvin-b91915169",
+          "profile": null,
+          "last_updated": null
+      }
+  ],
+  "next_page": "https://nubela.co/proxycurl/api/v2/search/person/?page_size=3&country=US&next_token=70rz7FUtAINVQSxkfaRXc1tbsjTp8tjzKDiBl174O4jv0Y4ryuxCsFKJF3FGYhgRThwa6mADwF3mmAVnno9ZYTkOyJOmQItQAsd3r7ayaGJvR4OEdRNtRPlCn4dVkPbqzRozf6EKC5a5920Q7On04ccKbtQy8zbJoym5ZYJI5iKoxgU6yPS2Nl9jP8GLPe88qegpYGgVWbQJKVWJ8tfI3M3iSYhyKXWqHKIC6879XQUGLC52WzAoimsQMsVGt25zZqucH3wIeb3Ma5dHTQOKQ3ufYhx2eNo9addo7ovDN92wrs3pKMppaA0F9Q2iFpBR2SFJUnw8igmezQ3a1kae2cXN1CKCmRXQMnxjbdlU2a1VfBUHxXYl4TuxAL",
+  "total_result_count": 2889
+}

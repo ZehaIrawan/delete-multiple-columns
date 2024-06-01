@@ -1,0 +1,12 @@
+.checkbox-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px; /* Adjust the gap as needed */
+  width: 400px;
+  margin-bottom: 1.5rem;
+}
+
+.custom-toast{
+  width: 20%;
+  z-index: 99;
+}

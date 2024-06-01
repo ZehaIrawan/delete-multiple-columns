@@ -1,0 +1,32 @@
+{
+  "name": "linked-turbo-client",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "prebuild": "npm install",
+    "dev": "vite --host",
+    "build": "vite build",
+    "lint": "eslint src --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
+    "start": "vite preview",
+    "expose": "mapps tunnel:create -p 8080"
+  },
+  "dependencies": {
+    "@reduxjs/toolkit": "^1.9.7",
+    "monday-sdk-js": "^0.4.12",
+    "monday-ui-react-core": "^2.84.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-redux": "^8.1.3"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^4.1.1",
+    "eslint": "^8.53.0",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-react-refresh": "^0.4.4",
+    "postcss": "^8.4.31",
+    "postcss-preset-mantine": "1.11.0",
+    "postcss-simple-vars": "^7.0.1",
+    "vite": "^4.5.0"
+  }
+}
