@@ -1,32 +1,32 @@
 import React, { useState } from "react";
 import { Dropdown, Button } from "monday-ui-react-core";
 
-const Column = ({ existingBoardColumns, monday, context, setBoardColumns }) => {
+const Column = ({ existingBoardGroups, monday, context, setBoardColumns }) => {
   // https://community.monday.com/t/difficulty-in-deleting-some-columns/47627
   // https://community.monday.com/t/can-you-delete-a-board-column-through-graphql/26976
   // https://community.monday.com/t/ability-to-delete-columns-through-the-api/23359/6
   // after refresh its coming back again
-  const [selectedColumns, setSelectedColumns] = useState([]);
+  const [selectedGroups, setBoardGroups] = useState([]);
 
   const handleChange = (i) => {
-    setSelectedColumns(i);
+    setBoardGroups(i);
   };
 
   const handleDelete = async () => {
     try {
-      for (const column of selectedColumns) {
-        const deleteColumnQuery = `
+      for (const column of selectedGroups) {
+        const deleteGroupMutation = `
           mutation {
-            delete_column(board_id: ${context.boardId}, column_id: "${column.value}") {
+            delete_group(board_id: ${context.boardId}, column_id: "${column.value}") {
               id
             }
           }
         `;
 
         // Log the query for debugging
-        console.log("Deleting column with query:", deleteColumnQuery);
+        console.log("Deleting column with query:", deleteGroupMutation);
 
-        const response = await monday.api(deleteColumnQuery);
+        const response = await monday.api(deleteGroupMutation);
 
         // Log the response for debugging
         console.log("Delete response:", response);
@@ -36,7 +36,7 @@ const Column = ({ existingBoardColumns, monday, context, setBoardColumns }) => {
       const boardResponse = await monday.api(`
         query {
           boards(ids: ${context.boardId}) {
-            columns {
+            groups {
               id
               title
             }
@@ -45,7 +45,7 @@ const Column = ({ existingBoardColumns, monday, context, setBoardColumns }) => {
       `);
 
       // Log the response for debugging
-      console.log("Updated columns:", boardResponse.data.boards[0].columns);
+      console.log("Updated columns:", boardResponse.data.boards[0].groups);
 
       // Update the local state with the new list of columns
       setBoardColumns(
