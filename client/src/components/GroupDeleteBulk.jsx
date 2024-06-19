@@ -92,7 +92,7 @@ const Column = ({ existingBoardGroups, monday, context, setBoardColumns }) => {
         multiline
         onChange={handleChange}
         // remove mandatory fields from option, ex: name
-        options={existingBoardColumns}
+        options={existingBoardGroups}
         className="dropdown-stories-styles_with-chips"
       />
 

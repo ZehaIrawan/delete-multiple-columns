@@ -5,7 +5,7 @@ import welcomeImage from "../assets/welcome.png";
 
 const OnboardingPage = ({ monday, setIsOnboarded, context }) => {
   const handleOnboard = () => {
-    localStorage.setItem(`isOnboarded-${context.user.id}-linked-turbo`, true);
+    localStorage.setItem(`isOnboarded-${context.user.id}-delete-bulk`, true);
     setIsOnboarded(true);
   };
 

@@ -15,6 +15,7 @@ import { getProfileDataCost } from "./utils/constant";
 import "./app.css";
 import OnboardingPage from "./components/OnboardingPage";
 import ColumnDeleteBulk from "./components/ColumnDeleteBulk";
+import GroupDeleteBulk from "./components/GroupDeleteBulk";
 
 const monday = mondaySdk();
 
@@ -42,7 +43,7 @@ export default function App() {
         const data = await response.json();
 
         const decrease = await decreaseUserCredit(
-          `${context.account.id}-linked-turbo`,
+          `${context.account.id}-delete-bulk`,
           getProfileDataCost,
         );
 
@@ -82,10 +83,10 @@ export default function App() {
 
       const userId = res.data.user.id;
 
-      const accountId = `${res.data.account.id}-linked-turbo`;
+      const accountId = `${res.data.account.id}-delete-bulk`;
 
       const isOnboarded = localStorage.getItem(
-        `isOnboarded-${userId}-linked-turbo`,
+        `isOnboarded-${userId}-delete-bulk`,
       );
       setIsOnboarded(isOnboarded);
 
@@ -222,6 +223,16 @@ export default function App() {
           setBoardColumns={setBoardColumns}
         />
 
+        <Flex
+          gap={Flex.gaps.SMALL}
+          direction={Flex.directions.COLUMN}
+          justify={Flex.justify.START}
+          align={Flex.align.START}
+        >
+          <Heading type={Heading.types.H2} weight={Heading.weights.BOLD}>
+            Delete Multiple Groups
+          </Heading>
+        </Flex>
         <GroupDeleteBulk
           existingBoardGroups={boardGroups}
           monday={monday}
