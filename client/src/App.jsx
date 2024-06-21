@@ -16,11 +16,22 @@ import "./app.css";
 import OnboardingPage from "./components/OnboardingPage";
 import ColumnDeleteBulk from "./components/ColumnDeleteBulk";
 import GroupDeleteBulk from "./components/GroupDeleteBulk";
+import CustomModal from "./components/Modal";
+import useModal from "./hooks/useModal";
 
 const monday = mondaySdk();
 
 export default function App() {
   const [context, setContext] = useState();
+  const {
+    isModalOpen,
+    openModal,
+    closeModal,
+    modalContent,
+    setModalContent,
+    modalType,
+    setModalType,
+  } = useModal(false);
   const [boardColumns, setBoardColumns] = useState();
   const [boardGroups, setBoardGroups] = useState();
 
@@ -146,6 +157,12 @@ export default function App() {
         height: "100%",
       }}
     >
+      <CustomModal
+        modalType={modalType}
+        isModalOpen={isModalOpen}
+        closeModal={closeModal}
+        modalContent={modalContent}
+      />
       <div
         style={{
           padding: "16px 16px",
@@ -217,12 +234,16 @@ export default function App() {
         <br></br>
 
         <ColumnDeleteBulk
+          setModalType={setModalType}
+          setModalContent={setModalContent}
+          openModal={openModal}
           existingBoardColumns={boardColumns}
           monday={monday}
           context={context}
           setBoardColumns={setBoardColumns}
         />
 
+        <br />
         <Flex
           gap={Flex.gaps.SMALL}
           direction={Flex.directions.COLUMN}
@@ -234,6 +255,9 @@ export default function App() {
           </Heading>
         </Flex>
         <GroupDeleteBulk
+          setModalType={setModalType}
+          setModalContent={setModalContent}
+          openModal={openModal}
           existingBoardGroups={boardGroups}
           monday={monday}
           context={context}

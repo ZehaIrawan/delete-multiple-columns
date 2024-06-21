@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import { Dropdown, Button } from "monday-ui-react-core";
 
-const Column = ({ existingBoardGroups, monday, context, setBoardColumns }) => {
+const Column = ({ existingBoardGroups, monday, context, setBoardColumns,  openModal,
+  setModalContent,
+  setModalType }) => {
   // https://community.monday.com/t/difficulty-in-deleting-some-columns/47627
   // https://community.monday.com/t/can-you-delete-a-board-column-through-graphql/26976
   // https://community.monday.com/t/ability-to-delete-columns-through-the-api/23359/6
@@ -10,6 +12,12 @@ const Column = ({ existingBoardGroups, monday, context, setBoardColumns }) => {
 
   const handleChange = (i) => {
     setBoardGroups(i);
+  };
+
+  const handleConfirmDelete = () => {
+    setModalContent(selectedGroups.map((column) => column.label).join(', '));
+    setModalType('Group');
+    openModal();
   };
 
   const handleDelete = async () => {
@@ -99,7 +107,7 @@ const Column = ({ existingBoardGroups, monday, context, setBoardColumns }) => {
       {/* need confirmation modal */}
       {/* display loader so user dont navigate away from the page */}
       {/* display success or fail alert */}
-      <Button onClick={handleDelete}>Delete Columns</Button>
+      <Button disabled={selectedGroups.length === 0} onClick={handleConfirmDelete}>Delete Columns</Button>
     </div>
   );
 };

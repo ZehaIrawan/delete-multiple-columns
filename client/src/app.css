@@ -10,3 +10,10 @@
   width: 20%;
   z-index: 99;
 }
+
+.modal-footer{
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap:1rem;
+}
