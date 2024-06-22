@@ -3,77 +3,23 @@ import { Dropdown, Button } from "monday-ui-react-core";
 
 const Column = ({
   existingBoardColumns,
-  monday,
-  context,
-  setBoardColumns,
   openModal,
-  setModalContent,
-  setModalType
+  setSelectedItem,
+  setModalType,
+  selectedItem,
 }) => {
   // https://community.monday.com/t/difficulty-in-deleting-some-columns/47627
   // https://community.monday.com/t/can-you-delete-a-board-column-through-graphql/26976
   // https://community.monday.com/t/ability-to-delete-columns-through-the-api/23359/6
   // after refresh its coming back again
-  const [selectedColumns, setSelectedColumns] = useState([]);
 
   const handleChange = (i) => {
-    setSelectedColumns(i);
+    setSelectedItem(i);
   };
-  
+
   const handleConfirmDelete = () => {
-    setModalContent(selectedColumns.map((column) => column.label).join(', '));
-    setModalType('Column');
+    setModalType("Column");
     openModal();
-  };
-
-  const handleDelete = async () => {
-    try {
-      for (const column of selectedColumns) {
-        const deleteColumnQuery = `
-          mutation {
-            delete_column(board_id: ${context.boardId}, column_id: "${column.value}") {
-              id
-            }
-          }
-        `;
-
-        // Log the query for debugging
-        console.log("Deleting column with query:", deleteColumnQuery);
-
-        const response = await monday.api(deleteColumnQuery);
-
-        // Log the response for debugging
-        console.log("Delete response:", response);
-      }
-
-      // After deleting columns, fetch the updated list of columns
-      const boardResponse = await monday.api(`
-        query {
-          boards(ids: ${context.boardId}) {
-            columns {
-              id
-              title
-            }
-          }
-        }
-      `);
-
-      // Log the response for debugging
-      console.log("Updated columns:", boardResponse.data.boards[0].columns);
-
-      // Update the local state with the new list of columns
-      setBoardColumns(
-        boardResponse.data.boards[0].columns.map((column) => ({
-          value: column.id,
-          label: column.title,
-        })),
-      );
-      alert("Columns deleted successfully!");
-    } catch (error) {
-      console.error("Error deleting columns:", error);
-    }
-
-    // after successful remove the deleted from options
   };
 
   // Name
@@ -101,6 +47,7 @@ const Column = ({
   return (
     <div>
       <Dropdown
+        value={selectedItem}
         placeholder="Select columns to delete"
         multi
         multiline
@@ -115,7 +62,7 @@ const Column = ({
       {/* display success or fail alert */}
       {/* <Button disabled={selectedColumns.length === 0} onClick={handleDelete}>Delete Columns</Button> */}
       <Button
-        disabled={selectedColumns.length === 0}
+        disabled={selectedItem.length === 0}
         onClick={handleConfirmDelete}
       >
         Delete Columns

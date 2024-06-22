@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Dropdown, Button } from "monday-ui-react-core";
 
 const Column = ({ existingBoardGroups, monday, context, setBoardColumns,  openModal,
-  setModalContent,
+  setSelectedItem,
   setModalType }) => {
   // https://community.monday.com/t/difficulty-in-deleting-some-columns/47627
   // https://community.monday.com/t/can-you-delete-a-board-column-through-graphql/26976
@@ -15,61 +15,12 @@ const Column = ({ existingBoardGroups, monday, context, setBoardColumns,  openMo
   };
 
   const handleConfirmDelete = () => {
-    setModalContent(selectedGroups.map((column) => column.label).join(', '));
+    // setSelectedItem(selectedGroups.map((column) => column.label).join(', '));
     setModalType('Group');
     openModal();
   };
 
-  const handleDelete = async () => {
-    try {
-      for (const column of selectedGroups) {
-        const deleteGroupMutation = `
-          mutation {
-            delete_group(board_id: ${context.boardId}, column_id: "${column.value}") {
-              id
-            }
-          }
-        `;
-
-        // Log the query for debugging
-        console.log("Deleting column with query:", deleteGroupMutation);
-
-        const response = await monday.api(deleteGroupMutation);
-
-        // Log the response for debugging
-        console.log("Delete response:", response);
-      }
-
-      // After deleting columns, fetch the updated list of columns
-      const boardResponse = await monday.api(`
-        query {
-          boards(ids: ${context.boardId}) {
-            groups {
-              id
-              title
-            }
-          }
-        }
-      `);
-
-      // Log the response for debugging
-      console.log("Updated columns:", boardResponse.data.boards[0].groups);
-
-      // Update the local state with the new list of columns
-      setBoardColumns(
-        boardResponse.data.boards[0].columns.map((column) => ({
-          value: column.id,
-          label: column.title,
-        })),
-      );
-      alert("Columns deleted successfully!");
-    } catch (error) {
-      console.error("Error deleting columns:", error);
-    }
-
-    // after successful remove the deleted from options
-  };
-
+ 
   // Name
   //   error_message: "Cannot delete mandatory column", error_code: "DeleteMandatoryColumnException",…}
   // account_id

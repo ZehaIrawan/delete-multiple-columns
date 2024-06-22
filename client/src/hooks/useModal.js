@@ -2,7 +2,7 @@ import { useState } from "react";
 
 const useModal = (initialState = false) => {
   const [isModalOpen, setIsModalOpen] = useState(initialState);
-  const [modalContent, setModalContent] = useState(null);
+  const [selectedItem, setSelectedItem] = useState([]);
   const [modalType, setModalType] = useState(null);
 
   const openModal = () => {
@@ -10,7 +10,6 @@ const useModal = (initialState = false) => {
   };
 
   const closeModal = () => {
-    setModalContent(null);
     setModalType(null);
     setIsModalOpen(false);
   };
@@ -19,8 +18,8 @@ const useModal = (initialState = false) => {
     isModalOpen,
     openModal,
     closeModal,
-    modalContent,
-    setModalContent,
+    selectedItem,
+    setSelectedItem,
     modalType,
     setModalType,
   };

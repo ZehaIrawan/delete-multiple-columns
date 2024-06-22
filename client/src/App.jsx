@@ -27,8 +27,8 @@ export default function App() {
     isModalOpen,
     openModal,
     closeModal,
-    modalContent,
-    setModalContent,
+    selectedItem,
+    setSelectedItem,
     modalType,
     setModalType,
   } = useModal(false);
@@ -39,10 +39,11 @@ export default function App() {
   const [isLoadingMondayProfile, setIsLoadingMondayProfile] = useState(false);
   const [userData, setUserData] = useState();
 
-  const [isSavingLead, setIsSavingLead] = useState(false);
+  const [isSuccesfullyDelete, setIsSuccesfullyDelete] = useState(false);
   const [isFailedToSaveLead, setIsFailedToSaveLead] = useState(false);
   const [isLoadingSaving, setIsLoadingSaving] = useState(false);
   const [isOnboarded, setIsOnboarded] = useState(true);
+  const [isDeleting, setIsDeleting] = useState(false);
 
   const handleGetProfileData = async (personURL) => {
     try {
@@ -136,6 +137,12 @@ export default function App() {
     });
   }, []);
 
+
+  const handleCloseSuccesfullyDelete = () => {
+    setIsSuccesfullyDelete(false)
+    setSelectedItem([]);
+  };
+
   if (!isLoadingMondayProfile && !isOnboarded) {
     return (
       <OnboardingPage
@@ -161,8 +168,16 @@ export default function App() {
         modalType={modalType}
         isModalOpen={isModalOpen}
         closeModal={closeModal}
-        modalContent={modalContent}
+        selectedItem={selectedItem}
+        context={context}
+        setBoardColumns={setBoardColumns}
+        setBoardGroups={setBoardGroups}
+        monday={monday}
+        setIsSuccesfullyDelete={setIsSuccesfullyDelete}
+        setSelectedItem={setSelectedItem}
+        setIsDeleting={setIsDeleting}
       />
+
       <div
         style={{
           padding: "16px 16px",
@@ -212,13 +227,24 @@ export default function App() {
         )}
 
         <Toast
-          open={isSavingLead}
+          open={isDeleting}
+          loading={true}
           type={Toast.types.POSITIVE}
-          onClose={() => setIsSavingLead(false)}
+          onClose={() => setIsDeleting(false)}
+          // autoHideDuration={1500}
+          className="monday-storybook-toast_wrapper custom-toast"
+        >
+          {`Deleting ${selectedItem.length} selected item`}
+        </Toast>
+
+        <Toast
+          open={isSuccesfullyDelete}
+          type={Toast.types.POSITIVE}
+          onClose={handleCloseSuccesfullyDelete}
           autoHideDuration={1500}
           className="monday-storybook-toast_wrapper custom-toast"
         >
-          Profile saved!
+          {`We successfully deleted ${selectedItem.length} item`}
         </Toast>
 
         <Toast
@@ -235,12 +261,13 @@ export default function App() {
 
         <ColumnDeleteBulk
           setModalType={setModalType}
-          setModalContent={setModalContent}
+          setSelectedItem={setSelectedItem}
           openModal={openModal}
           existingBoardColumns={boardColumns}
           monday={monday}
           context={context}
           setBoardColumns={setBoardColumns}
+          selectedItem={selectedItem}
         />
 
         <br />
@@ -256,7 +283,7 @@ export default function App() {
         </Flex>
         <GroupDeleteBulk
           setModalType={setModalType}
-          setModalContent={setModalContent}
+          setSelectedItem={setSelectedItem}
           openModal={openModal}
           existingBoardGroups={boardGroups}
           monday={monday}
