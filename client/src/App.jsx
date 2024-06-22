@@ -116,14 +116,12 @@ export default function App() {
       }}`;
       const boardResponse = await monday.api(boardQuery);
 
-      console.log(boardResponse, "boardResponse");
-
-      const fetchedBoardColumns = boardResponse.data.boards[0].columns.map(
-        (column) => ({
+      const fetchedBoardColumns = boardResponse.data.boards[0].columns
+        .filter((column) => column.id !== "name")
+        .map((column) => ({
           value: column.id,
           label: column.title,
-        }),
-      );
+        }));
 
       setBoardColumns(fetchedBoardColumns);
 
@@ -137,9 +135,8 @@ export default function App() {
     });
   }, []);
 
-
   const handleCloseSuccesfullyDelete = () => {
-    setIsSuccesfullyDelete(false)
+    setIsSuccesfullyDelete(false);
     setSelectedItem([]);
   };
 
@@ -271,13 +268,14 @@ export default function App() {
         />
 
         <br />
+        <br />
         <Flex
           gap={Flex.gaps.SMALL}
           direction={Flex.directions.COLUMN}
           justify={Flex.justify.START}
           align={Flex.align.START}
         >
-          <Heading type={Heading.types.H2} weight={Heading.weights.BOLD}>
+          <Heading style={{ marginBottom: "1rempx" }} type={Heading.types.H2} weight={Heading.weights.BOLD}>
             Delete Multiple Groups
           </Heading>
         </Flex>

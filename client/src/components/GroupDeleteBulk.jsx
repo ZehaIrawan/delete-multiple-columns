@@ -58,7 +58,7 @@ const Column = ({ existingBoardGroups, monday, context, setBoardColumns,  openMo
       {/* need confirmation modal */}
       {/* display loader so user dont navigate away from the page */}
       {/* display success or fail alert */}
-      <Button disabled={selectedGroups.length === 0} onClick={handleConfirmDelete}>Delete Columns</Button>
+      <Button  style={{marginTop: '0.5rem'}} disabled={selectedGroups.length === 0} onClick={handleConfirmDelete}>Delete Columns</Button>
     </div>
   );
 };

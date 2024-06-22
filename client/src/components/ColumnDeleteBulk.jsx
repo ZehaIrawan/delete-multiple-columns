@@ -57,11 +57,8 @@ const Column = ({
         className="dropdown-stories-styles_with-chips"
       />
 
-      {/* need confirmation modal */}
-      {/* display loader so user dont navigate away from the page */}
-      {/* display success or fail alert */}
-      {/* <Button disabled={selectedColumns.length === 0} onClick={handleDelete}>Delete Columns</Button> */}
       <Button
+        style={{ marginTop: "0.5rem" }}
         disabled={selectedItem.length === 0}
         onClick={handleConfirmDelete}
       >
