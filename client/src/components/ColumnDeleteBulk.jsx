@@ -7,6 +7,7 @@ const Column = ({
   setSelectedItem,
   setModalType,
   selectedItem,
+  modalType
 }) => {
   // https://community.monday.com/t/difficulty-in-deleting-some-columns/47627
   // https://community.monday.com/t/can-you-delete-a-board-column-through-graphql/26976
@@ -14,11 +15,11 @@ const Column = ({
   // after refresh its coming back again
 
   const handleChange = (i) => {
+    setModalType("Column");
     setSelectedItem(i);
   };
 
   const handleConfirmDelete = () => {
-    setModalType("Column");
     openModal();
   };
 
@@ -47,7 +48,7 @@ const Column = ({
   return (
     <div>
       <Dropdown
-        value={selectedItem}
+        value={modalType === "Column" ? selectedItem : []}
         placeholder="Select columns to delete"
         multi
         multiline

@@ -9,7 +9,8 @@
     "build": "vite build",
     "lint": "eslint src --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "start": "vite preview",
-    "expose": "mapps -u tunnel:create -p 8080"
+    "expose": "mapps -u tunnel:create -p 8080",
+    "build-watch": "vite build --watch --config ./vite.config.js"
   },
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.7",

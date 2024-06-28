@@ -6,9 +6,10 @@
     "dev-server": "npm run stop && npm run client-build && concurrently \"ts-node-dev --watch ./.env ./src/app.ts\" \"npm run expose\"",
     "build": "tsc",
     "start": "node ./dist/app.js",
-    "expose": "mapps tunnel:create -p 8080",
+    "expose": "mapps -u tunnel:create -p 8080",
     "stop": "kill-port 8080",
     "deploy": "npm run client-build && mapps code:push",
+    "client-watch": "cd client && npm run build-watch",
     "client-build": "cd client && npm run build",
     "dev": "ts-node-dev --watch ./.env ./src/app.ts"
   },

@@ -15,9 +15,9 @@ import { getProfileDataCost } from "./utils/constant";
 import "./app.css";
 import OnboardingPage from "./components/OnboardingPage";
 import ColumnDeleteBulk from "./components/ColumnDeleteBulk";
-import GroupDeleteBulk from "./components/GroupDeleteBulk";
 import CustomModal from "./components/Modal";
 import useModal from "./hooks/useModal";
+import GroupDeleteBulk from "./components/GroupDeleteBulk";
 
 const monday = mondaySdk();
 
@@ -102,7 +102,7 @@ export default function App() {
       );
       setIsOnboarded(isOnboarded);
 
-      // checkAndCreateUser(accountId, "monday.com", userId);
+      checkAndCreateUser(accountId, "monday.com", userId);
 
       const boardQuery = `query {boards(ids: ${res.data.boardId}) {
         columns {
@@ -265,6 +265,7 @@ export default function App() {
           context={context}
           setBoardColumns={setBoardColumns}
           selectedItem={selectedItem}
+          modalType={modalType}
         />
 
         <br />
@@ -287,6 +288,8 @@ export default function App() {
           monday={monday}
           context={context}
           setBoardGroups={setBoardGroups}
+          selectedItem={selectedItem}
+          modalType={modalType}
         />
       </div>
     </div>

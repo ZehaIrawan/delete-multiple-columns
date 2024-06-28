@@ -1,26 +1,30 @@
 import React, { useState } from "react";
 import { Dropdown, Button } from "monday-ui-react-core";
 
-const Column = ({ existingBoardGroups, monday, context, setBoardColumns,  openModal,
+const Column = ({
+  existingBoardGroups,
+  monday,
+  context,
+  selectedItem,
+  openModal,
   setSelectedItem,
-  setModalType }) => {
+  setModalType,
+  modalType,
+}) => {
   // https://community.monday.com/t/difficulty-in-deleting-some-columns/47627
   // https://community.monday.com/t/can-you-delete-a-board-column-through-graphql/26976
   // https://community.monday.com/t/ability-to-delete-columns-through-the-api/23359/6
   // after refresh its coming back again
-  const [selectedGroups, setBoardGroups] = useState([]);
 
   const handleChange = (i) => {
-    setBoardGroups(i);
+    setModalType("Group");
+    setSelectedItem(i);
   };
 
   const handleConfirmDelete = () => {
-    // setSelectedItem(selectedGroups.map((column) => column.label).join(', '));
-    setModalType('Group');
     openModal();
   };
 
- 
   // Name
   //   error_message: "Cannot delete mandatory column", error_code: "DeleteMandatoryColumnException",…}
   // account_id
@@ -46,7 +50,8 @@ const Column = ({ existingBoardGroups, monday, context, setBoardColumns,  openMo
   return (
     <div>
       <Dropdown
-        placeholder="Select columns to delete"
+       value={modalType === "Group" ? selectedItem : []}
+        placeholder="Select groups to delete"
         multi
         multiline
         onChange={handleChange}
@@ -58,7 +63,13 @@ const Column = ({ existingBoardGroups, monday, context, setBoardColumns,  openMo
       {/* need confirmation modal */}
       {/* display loader so user dont navigate away from the page */}
       {/* display success or fail alert */}
-      <Button  style={{marginTop: '0.5rem'}} disabled={selectedGroups.length === 0} onClick={handleConfirmDelete}>Delete Columns</Button>
+      <Button
+        style={{ marginTop: "0.5rem" }}
+        disabled={selectedItem.length === 0}
+        onClick={handleConfirmDelete}
+      >
+        Delete Groups
+      </Button>
     </div>
   );
 };
