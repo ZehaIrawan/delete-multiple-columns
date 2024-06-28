@@ -45,29 +45,6 @@ export default function App() {
   const [isOnboarded, setIsOnboarded] = useState(true);
   const [isDeleting, setIsDeleting] = useState(false);
 
-  const handleGetProfileData = async (personURL) => {
-    try {
-      setIsLoadingSaving(true);
-
-      if (userData.credits - getProfileDataCost >= 0) {
-        const response = await fetch(`/person_profile?url=${personURL}`);
-
-        const data = await response.json();
-
-        const decrease = await decreaseUserCredit(
-          `${context.account.id}-delete-bulk`,
-          getProfileDataCost,
-        );
-
-        setUserData((prev) => {
-          return { ...prev, credits: decrease.credits };
-        });
-      }
-    } catch (error) {
-      console.error("Error:", error);
-    }
-  };
-
   async function checkAndCreateUser(
     accountId,
     marketplaceName = "monday.com",
@@ -173,6 +150,7 @@ export default function App() {
         setIsSuccesfullyDelete={setIsSuccesfullyDelete}
         setSelectedItem={setSelectedItem}
         setIsDeleting={setIsDeleting}
+        setUserData={setUserData}
       />
 
       <div
@@ -276,7 +254,11 @@ export default function App() {
           justify={Flex.justify.START}
           align={Flex.align.START}
         >
-          <Heading style={{ marginBottom: "1rempx" }} type={Heading.types.H2} weight={Heading.weights.BOLD}>
+          <Heading
+            style={{ marginBottom: "1rempx" }}
+            type={Heading.types.H2}
+            weight={Heading.weights.BOLD}
+          >
             Delete Multiple Groups
           </Heading>
         </Flex>

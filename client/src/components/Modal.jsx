@@ -7,6 +7,9 @@ import {
   Text,
   Heading,
 } from "monday-ui-react-core";
+import {
+  decreaseUserCredit,
+} from "../utils/api";
 
 const CustomModal = ({
   isModalOpen,
@@ -20,7 +23,20 @@ const CustomModal = ({
   setSelectedItem,
   setIsSuccesfullyDelete,
   setIsDeleting,
+  setUserData
 }) => {
+  const handleDecreaseCredit = async () => {
+    console.log('called');
+    const decrease = await decreaseUserCredit(
+      `${context.account.id}-delete-bulk`,
+      1,
+    );
+
+    setUserData((prev) => {
+      return { ...prev, credits: decrease.credits };
+    });
+  }
+
   const handleDeleteConfirm = () => {
     if (modalType === "Column") {
       handleDeleteColumns();
@@ -31,6 +47,9 @@ const CustomModal = ({
   };
 
   const handleDeleteColumns = async () => {
+    if(selectedItem.length === 0) {
+      return;
+    }
     try {
       for (const column of selectedItem) {
         const deleteColumnQuery = `
@@ -76,6 +95,7 @@ const CustomModal = ({
 
       setIsDeleting(false);
       setIsSuccesfullyDelete(true);
+      handleDecreaseCredit();
     } catch (error) {
       console.error("Error deleting columns:", error);
     }
@@ -84,17 +104,20 @@ const CustomModal = ({
   };
 
   const handleDeleteGroups = async () => {
+    if(selectedItem.length === 0) {
+      return;
+    }
     try {
-      for (const column of selectedGroups) {
+      for (const group of  selectedItem) {
         const deleteGroupMutation = `
           mutation {
-            delete_group(board_id: ${context.boardId}, column_id: "${column.value}") {
+            delete_group(board_id: ${context.boardId}, group_id: "${group.value}") {
               id
             }
           }
         `;
 
-        // Log the query for debugging
+        setIsDeleting(true);
         console.log("Deleting column with query:", deleteGroupMutation);
 
         const response = await monday.api(deleteGroupMutation);
@@ -120,11 +143,14 @@ const CustomModal = ({
 
       // Update the local state with the new list of columns
       setBoardGroups(
-        boardResponse.data.boards[0].columns.map((column) => ({
+        boardResponse.data.boards[0].groups.map((column) => ({
           value: column.id,
           label: column.title,
         })),
       );
+      setIsDeleting(false);
+      setIsSuccesfullyDelete(true);
+      handleDecreaseCredit();
     } catch (error) {
       console.error("Error deleting columns:", error);
     }
