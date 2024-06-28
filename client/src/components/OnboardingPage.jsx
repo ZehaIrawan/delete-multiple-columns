@@ -13,7 +13,7 @@ const OnboardingPage = ({ monday, setIsOnboarded, context }) => {
     <div style={{ display: "flex", width: "100%", height: "100vh" }}>
       <div
         style={{
-          backgroundColor: "#2D67BC",
+          backgroundColor: "#2B046E",
           height: "100%",
           width: "40%",
           padding: "3rem",
@@ -29,7 +29,7 @@ const OnboardingPage = ({ monday, setIsOnboarded, context }) => {
           weight={Heading.weights.BOLD}
           ellipsis={false}
         >
-          Welcome to Linked Turbo, Find & enrich targeted Linkedin profiles
+          Welcome to Delete Multiple Columns & Groups!
         </Heading>
 
         <Text
@@ -55,7 +55,7 @@ const OnboardingPage = ({ monday, setIsOnboarded, context }) => {
         style={{
           width: "60%",
           height: "100%",
-          backgroundColor: "#5182CB",
+          backgroundColor: "#4E288D",
           display: "flex",
           alignItems: "center",
         }}
