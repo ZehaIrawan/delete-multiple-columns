@@ -21,3 +21,8 @@
 .error-msg{
   color:#BA1C1C
 }
+
+.error-toast{
+  width: 50%;
+  z-index: 99;
+}

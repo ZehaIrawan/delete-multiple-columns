@@ -23,7 +23,8 @@ const CustomModal = ({
   setSelectedItem,
   setIsSuccesfullyDelete,
   setIsDeleting,
-  setUserData
+  setUserData,
+  setIsFailedDelete,
 }) => {
   const handleDecreaseCredit = async () => {
     console.log('called');
@@ -99,6 +100,8 @@ const CustomModal = ({
       handleDecreaseCredit();
       monday.execute("valueCreatedForUser");
     } catch (error) {
+      setIsDeleting(false);
+      setIsFailedDelete(true);
       console.error("Error deleting columns:", error);
     }
 
@@ -155,6 +158,8 @@ const CustomModal = ({
       handleDecreaseCredit();
       monday.execute("valueCreatedForUser");
     } catch (error) {
+      setIsDeleting(false);
+      setIsFailedDelete(true);
       console.error("Error deleting columns:", error);
     }
 

@@ -35,7 +35,7 @@ export default function App() {
   const [userData, setUserData] = useState();
 
   const [isSuccesfullyDelete, setIsSuccesfullyDelete] = useState(false);
-  const [isFailedToSaveLead, setIsFailedToSaveLead] = useState(false);
+  const [isFailedDelete, setIsFailedDelete] = useState(false);
   const [isLoadingSaving, setIsLoadingSaving] = useState(false);
   const [isOnboarded, setIsOnboarded] = useState(true);
   const [isDeleting, setIsDeleting] = useState(false);
@@ -150,6 +150,7 @@ export default function App() {
         setSelectedItem={setSelectedItem}
         setIsDeleting={setIsDeleting}
         setUserData={setUserData}
+        setIsFailedDelete={setIsFailedDelete}
       />
 
       <div
@@ -211,13 +212,13 @@ export default function App() {
         </Toast>
 
         <Toast
-          open={isFailedToSaveLead}
+          open={isFailedDelete}
           type={Toast.types.NEGATIVE}
-          onClose={() => setIsFailedToSaveLead(false)}
+          onClose={() => setIsFailedDelete(false)}
           autoHideDuration={1500}
-          className="monday-storybook-toast_wrapper"
+          className="monday-storybook-toast_wrapper error-toast"
         >
-          Failed to save lead
+          Something went wrong. Please try again later
         </Toast>
 
         <br></br>
