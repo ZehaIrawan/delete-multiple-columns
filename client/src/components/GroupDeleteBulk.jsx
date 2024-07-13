@@ -55,17 +55,13 @@ const Column = ({
         multi
         multiline
         onChange={handleChange}
-        // remove mandatory fields from option, ex: name
         options={existingBoardGroups}
         className="dropdown-stories-styles_with-chips"
       />
 
-      {/* need confirmation modal */}
-      {/* display loader so user dont navigate away from the page */}
-      {/* display success or fail alert */}
       <Button
         style={{ marginTop: "0.5rem" }}
-        disabled={selectedItem.length === 0}
+        disabled={modalType === "Column" || selectedItem.length === 0}
         onClick={handleConfirmDelete}
       >
         Delete Groups

@@ -53,14 +53,13 @@ const Column = ({
         multi
         multiline
         onChange={handleChange}
-        // remove mandatory fields from option, ex: name
         options={existingBoardColumns}
         className="dropdown-stories-styles_with-chips"
       />
 
       <Button
         style={{ marginTop: "0.5rem" }}
-        disabled={selectedItem.length === 0}
+        disabled={modalType === "Group" || selectedItem.length === 0}
         onClick={handleConfirmDelete}
       >
         Delete Columns

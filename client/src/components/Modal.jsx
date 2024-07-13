@@ -60,11 +60,12 @@ const CustomModal = ({
           }
         `;
 
+        const response = await monday.api(deleteColumnQuery);
+
         // Log the query for debugging
         console.log("Deleting column with query:", deleteColumnQuery);
         setIsDeleting(true);
 
-        const response = await monday.api(deleteColumnQuery);
 
         // Log the response for debugging
         console.log("Delete response:", response);
