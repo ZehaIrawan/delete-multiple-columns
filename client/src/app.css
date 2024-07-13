@@ -17,3 +17,7 @@
   align-items: center;
   gap:1rem;
 }
+
+.error-msg{
+  color:#BA1C1C
+}

@@ -5,18 +5,14 @@ import { useEffect, useState } from "react";
 import "monday-ui-react-core/tokens";
 import { Flex, Loader, Toast } from "monday-ui-react-core";
 import { Heading } from "monday-ui-react-core/next";
-import {
-  checkUserCredit,
-  createUser,
-  checkUserExist,
-} from "./utils/api";
+import { checkUserCredit, createUser, checkUserExist } from "./utils/api";
 import "./app.css";
 import OnboardingPage from "./components/OnboardingPage";
 import ColumnDeleteBulk from "./components/ColumnDeleteBulk";
 import CustomModal from "./components/Modal";
 import useModal from "./hooks/useModal";
 import GroupDeleteBulk from "./components/GroupDeleteBulk";
-import ViewerOnlyWarning from './components/ViewerOnlyWarning';
+import ViewerOnlyWarning from "./components/ViewerOnlyWarning";
 
 const monday = mondaySdk();
 
@@ -131,7 +127,7 @@ export default function App() {
   }
 
   if (context?.user?.isViewOnly) {
-    return <ViewerOnlyWarning />
+    return <ViewerOnlyWarning />;
   }
 
   return (
@@ -255,6 +251,7 @@ export default function App() {
           </Heading>
         </Flex>
         <GroupDeleteBulk
+          boardGroups={boardGroups}
           setModalType={setModalType}
           setSelectedItem={setSelectedItem}
           openModal={openModal}

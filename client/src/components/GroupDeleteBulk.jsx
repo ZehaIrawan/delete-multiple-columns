@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Dropdown, Button } from "monday-ui-react-core";
+import { Dropdown, Button, Text } from "monday-ui-react-core";
 
 const Column = ({
   existingBoardGroups,
@@ -10,6 +10,7 @@ const Column = ({
   setSelectedItem,
   setModalType,
   modalType,
+  boardGroups,
 }) => {
   // https://community.monday.com/t/difficulty-in-deleting-some-columns/47627
   // https://community.monday.com/t/can-you-delete-a-board-column-through-graphql/26976
@@ -50,7 +51,7 @@ const Column = ({
   return (
     <div>
       <Dropdown
-       value={modalType === "Group" ? selectedItem : []}
+        value={modalType === "Group" ? selectedItem : []}
         placeholder="Select groups to delete"
         multi
         multiline
@@ -61,11 +62,25 @@ const Column = ({
 
       <Button
         style={{ marginTop: "0.5rem" }}
-        disabled={modalType === "Column" || selectedItem.length === 0}
+        disabled={
+          (modalType === "Column" ||
+          selectedItem.length === 0 )||
+          boardGroups?.length === 1
+        }
         onClick={handleConfirmDelete}
       >
         Delete Groups
       </Button>
+      {boardGroups?.length === 1 && (
+        <Text
+          type={Text.types.TEXT1}
+          weight={Text.weights.BOLD}
+          className="error-msg"
+          style={{ marginTop: "0.5rem" }}
+        >
+          You can't delete the last group
+        </Text>
+      )}
     </div>
   );
 };
