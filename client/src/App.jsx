@@ -3,21 +3,20 @@ import "monday-ui-react-core/dist/main.css";
 import AttentionBox from "monday-ui-react-core/dist/AttentionBox.js";
 import { useEffect, useState } from "react";
 import "monday-ui-react-core/tokens";
-import { Flex, Text, Loader, Toast } from "monday-ui-react-core";
+import { Flex, Loader, Toast } from "monday-ui-react-core";
 import { Heading } from "monday-ui-react-core/next";
 import {
   checkUserCredit,
   createUser,
   checkUserExist,
-  decreaseUserCredit,
 } from "./utils/api";
-import { getProfileDataCost } from "./utils/constant";
 import "./app.css";
 import OnboardingPage from "./components/OnboardingPage";
 import ColumnDeleteBulk from "./components/ColumnDeleteBulk";
 import CustomModal from "./components/Modal";
 import useModal from "./hooks/useModal";
 import GroupDeleteBulk from "./components/GroupDeleteBulk";
+import ViewerOnlyWarning from './components/ViewerOnlyWarning';
 
 const monday = mondaySdk();
 
@@ -131,6 +130,10 @@ export default function App() {
     return <Loader />;
   }
 
+  if (context?.user?.isViewOnly) {
+    return <ViewerOnlyWarning />
+  }
+
   return (
     <div
       style={{
@@ -170,17 +173,6 @@ export default function App() {
             Delete Multiple Columns
           </Heading>
         </Flex>
-
-        {context?.user?.isViewOnly && (
-          <Flex justify={Flex.justify.CENTER}>
-            <AttentionBox
-              className="monday-storybook-attention-box_box"
-              text="As a viewer, you are unable to use this app."
-              title="Warning!"
-              type={AttentionBox.types.WARNING}
-            />
-          </Flex>
-        )}
 
         {userData && (
           <Flex justify={Flex.justify.CENTER}>
