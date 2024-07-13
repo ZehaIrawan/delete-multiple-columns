@@ -97,6 +97,7 @@ const CustomModal = ({
       setIsDeleting(false);
       setIsSuccesfullyDelete(true);
       handleDecreaseCredit();
+      monday.execute("valueCreatedForUser");
     } catch (error) {
       console.error("Error deleting columns:", error);
     }
@@ -152,6 +153,7 @@ const CustomModal = ({
       setIsDeleting(false);
       setIsSuccesfullyDelete(true);
       handleDecreaseCredit();
+      monday.execute("valueCreatedForUser");
     } catch (error) {
       console.error("Error deleting columns:", error);
     }
