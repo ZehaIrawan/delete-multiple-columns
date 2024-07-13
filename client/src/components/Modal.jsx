@@ -7,9 +7,7 @@ import {
   Text,
   Heading,
 } from "monday-ui-react-core";
-import {
-  decreaseUserCredit,
-} from "../utils/api";
+import { decreaseUserCredit } from "../utils/api";
 
 const CustomModal = ({
   isModalOpen,
@@ -27,7 +25,7 @@ const CustomModal = ({
   setIsFailedDelete,
 }) => {
   const handleDecreaseCredit = async () => {
-    console.log('called');
+    console.log("called");
     const decrease = await decreaseUserCredit(
       `${context.account.id}-delete-bulk`,
       1,
@@ -36,7 +34,7 @@ const CustomModal = ({
     setUserData((prev) => {
       return { ...prev, credits: decrease.credits };
     });
-  }
+  };
 
   const handleDeleteConfirm = () => {
     if (modalType === "Column") {
@@ -48,7 +46,7 @@ const CustomModal = ({
   };
 
   const handleDeleteColumns = async () => {
-    if(selectedItem.length === 0) {
+    if (selectedItem.length === 0) {
       return;
     }
     try {
@@ -66,7 +64,6 @@ const CustomModal = ({
         // Log the query for debugging
         console.log("Deleting column with query:", deleteColumnQuery);
         setIsDeleting(true);
-
 
         // Log the response for debugging
         console.log("Delete response:", response);
@@ -109,11 +106,11 @@ const CustomModal = ({
   };
 
   const handleDeleteGroups = async () => {
-    if(selectedItem.length === 0) {
+    if (selectedItem.length === 0) {
       return;
     }
     try {
-      for (const group of  selectedItem) {
+      for (const group of selectedItem) {
         const deleteGroupMutation = `
           mutation {
             delete_group(board_id: ${context.boardId}, group_id: "${group.value}") {
@@ -179,6 +176,10 @@ const CustomModal = ({
       >
         <ModalContent>
           <Text type={Heading.types.h2}>
+            <strong>
+              {`Total of ${selectedItem.length} ${modalType} selected`}
+            </strong>
+            <br />
             {selectedItem.map((column) => column.label).join(", ")}
           </Text>
         </ModalContent>
