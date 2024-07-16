@@ -50,6 +50,7 @@ const CustomModal = ({
       return;
     }
     try {
+      setIsDeleting(true);
       for (const column of selectedItem) {
         const deleteColumnQuery = `
           mutation {
@@ -63,7 +64,6 @@ const CustomModal = ({
 
         // Log the query for debugging
         console.log("Deleting column with query:", deleteColumnQuery);
-        setIsDeleting(true);
 
         // Log the response for debugging
         console.log("Delete response:", response);
@@ -110,6 +110,7 @@ const CustomModal = ({
       return;
     }
     try {
+      setIsDeleting(true);
       for (const group of selectedItem) {
         const deleteGroupMutation = `
           mutation {
@@ -119,7 +120,7 @@ const CustomModal = ({
           }
         `;
 
-        setIsDeleting(true);
+   
         console.log("Deleting column with query:", deleteGroupMutation);
 
         const response = await monday.api(deleteGroupMutation);

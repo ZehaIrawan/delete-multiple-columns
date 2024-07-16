@@ -11,6 +11,7 @@ const useModal = (initialState = false) => {
 
   const closeModal = () => {
     setModalType(null);
+    setSelectedItem([]);
     setIsModalOpen(false);
   };
 

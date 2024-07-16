@@ -198,7 +198,7 @@ export default function App() {
           // autoHideDuration={1500}
           className="monday-storybook-toast_wrapper custom-toast"
         >
-          {`Deleting ${selectedItem.length} selected item`}
+          {`Deleting selected item`}
         </Toast>
 
         <Toast
@@ -208,7 +208,7 @@ export default function App() {
           autoHideDuration={1500}
           className="monday-storybook-toast_wrapper custom-toast"
         >
-          {`We successfully deleted ${selectedItem.length} item`}
+          {`We successfully deleted selected item`}
         </Toast>
 
         <Toast
