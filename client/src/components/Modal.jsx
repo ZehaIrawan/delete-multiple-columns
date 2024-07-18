@@ -49,25 +49,25 @@ const CustomModal = ({
     if (selectedItem.length === 0) {
       return;
     }
+
     try {
       setIsDeleting(true);
-      for (const column of selectedItem) {
-        const deleteColumnQuery = `
-          mutation {
-            delete_column(board_id: ${context.boardId}, column_id: "${column.value}") {
-              id
-            }
-          }
-        `;
 
-        const response = await monday.api(deleteColumnQuery);
+      const deleteColumnQueries = selectedItem
+        .map((column, index) => {
+          return `col${index + 1}: delete_column(board_id: ${
+            context.boardId
+          }, column_id: "${column.value}") { id }`;
+        })
+        .join(" ");
 
-        // Log the query for debugging
-        console.log("Deleting column with query:", deleteColumnQuery);
+      const deleteColumnsMutation = `mutation { ${deleteColumnQueries} }`;
 
-        // Log the response for debugging
-        console.log("Delete response:", response);
-      }
+      const response = await monday.api(deleteColumnsMutation);
+
+      // Log the query and response for debugging
+      console.log("Deleting columns with query:", deleteColumnsMutation);
+      console.log("Delete response:", response);
 
       // After deleting columns, fetch the updated list of columns
       const boardResponse = await monday.api(`
@@ -101,35 +101,33 @@ const CustomModal = ({
       setIsFailedDelete(true);
       console.error("Error deleting columns:", error);
     }
-
-    // after successful remove the deleted from options
   };
 
   const handleDeleteGroups = async () => {
     if (selectedItem.length === 0) {
       return;
     }
+  
     try {
       setIsDeleting(true);
-      for (const group of selectedItem) {
-        const deleteGroupMutation = `
-          mutation {
-            delete_group(board_id: ${context.boardId}, group_id: "${group.value}") {
-              id
-            }
-          }
-        `;
-
-   
-        console.log("Deleting column with query:", deleteGroupMutation);
-
-        const response = await monday.api(deleteGroupMutation);
-
-        // Log the response for debugging
-        console.log("Delete response:", response);
-      }
-
-      // After deleting columns, fetch the updated list of columns
+  
+      // Construct the mutation for batch deletion
+      const deleteGroupQueries = selectedItem
+        .map((group, index) => {
+          return `grp${index + 1}: delete_group(board_id: ${context.boardId}, group_id: "${group.value}") { id }`;
+        })
+        .join(" ");
+  
+      const deleteGroupsMutation = `mutation { ${deleteGroupQueries} }`;
+  
+      // Make the API call
+      const response = await monday.api(deleteGroupsMutation);
+  
+      // Log the query and response for debugging
+      console.log("Deleting groups with query:", deleteGroupsMutation);
+      console.log("Delete response:", response);
+  
+      // After deleting groups, fetch the updated list of groups
       const boardResponse = await monday.api(`
         query {
           boards(ids: ${context.boardId}) {
@@ -140,17 +138,18 @@ const CustomModal = ({
           }
         }
       `);
-
+  
       // Log the response for debugging
-      console.log("Updated columns:", boardResponse.data.boards[0].groups);
-
-      // Update the local state with the new list of columns
+      console.log("Updated groups:", boardResponse.data.boards[0].groups);
+  
+      // Update the local state with the new list of groups
       setBoardGroups(
-        boardResponse.data.boards[0].groups.map((column) => ({
-          value: column.id,
-          label: column.title,
-        })),
+        boardResponse.data.boards[0].groups.map((group) => ({
+          value: group.id,
+          label: group.title,
+        }))
       );
+  
       setIsDeleting(false);
       setIsSuccesfullyDelete(true);
       handleDecreaseCredit();
@@ -158,12 +157,10 @@ const CustomModal = ({
     } catch (error) {
       setIsDeleting(false);
       setIsFailedDelete(true);
-      console.error("Error deleting columns:", error);
+      console.error("Error deleting groups:", error);
     }
-
-    // after successful remove the deleted from options
   };
-
+  
   return (
     <div>
       <Modal

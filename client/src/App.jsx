@@ -86,6 +86,7 @@ export default function App() {
           id
         }
       }}`;
+      
       const boardResponse = await monday.api(boardQuery);
 
       const fetchedBoardColumns = boardResponse.data.boards[0].columns

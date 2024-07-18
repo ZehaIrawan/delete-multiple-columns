@@ -26,3 +26,8 @@
   width: 50%;
   z-index: 99;
 }
+
+.custom-toast-error{
+  width: 40%;
+  z-index: 99;
+}
