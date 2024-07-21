@@ -76,21 +76,23 @@ export default function App() {
 
       checkAndCreateUser(accountId, "monday.com", userId);
 
-      const boardQuery = `query {boards(ids: ${res.data.boardId}) {
-        columns {
-          id
-          title
+      const boardQuery = `query {
+        boards(ids: ${res.data.boardId}) {
+          columns {
+            id
+            title
+          }
+          groups {
+            title
+            id
+          }
         }
-        groups {
-          title
-          id
-        }
-      }}`;
+      }`;
       
       const boardResponse = await monday.api(boardQuery);
 
       const fetchedBoardColumns = boardResponse.data.boards[0].columns
-        .filter((column) => column.id !== "name")
+        .filter((column) => column.id !== "name" && column.id !== "subitems")
         .map((column) => ({
           value: column.id,
           label: column.title,
