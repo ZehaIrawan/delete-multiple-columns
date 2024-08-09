@@ -32,7 +32,7 @@ router.post("/webhook", function (req, res) {
 
 const LOOPS_API_KEY = process.env.LOOPS_API_KEY;
 
-const baseURL = "https://turboflow.narantaka.com";
+const baseURL = "https://api.getturboflow.com";
 
 function updateUser(payload) {
   try {
